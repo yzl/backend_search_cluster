@@ -20,6 +20,6 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 # source_url 'https://github.com/<insert_org_here>/backend_search_cluster'
 #
 depends 'chef-ingredient'
-depends 'elasticsearch', '2.5.1'
+depends 'elasticsearch'
 depends 'java'
 depends 'sysctl'

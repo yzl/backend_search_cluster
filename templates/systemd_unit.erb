@@ -19,10 +19,10 @@ Group=<%= @es_group %>
 
 ExecStart=<%= @path_home %>/bin/elasticsearch \
             -p ${PID_DIR}/elasticsearch.pid \
-            -Des.default.path.home=${ES_HOME} \
-            -Des.default.path.logs=${LOG_DIR} \
-            -Des.default.path.data=${DATA_DIR} \
-            -Des.default.path.conf=${CONF_DIR}
+            -Ees.default.path.home=${ES_HOME} \
+            -Ees.default.path.logs=${LOG_DIR} \
+            -Ees.default.path.data=${DATA_DIR} \
+            -Ees.default.path.conf=${CONF_DIR}
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before

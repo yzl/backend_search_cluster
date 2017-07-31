@@ -47,15 +47,14 @@ elasticsearch_configure 'elasticsearch' do
   path_plugins  '/opt/elasticsearch/plugins'
   path_bin      '/opt/elasticsearch/bin'
   logging(action: 'INFO')
-  gc_settings <<-CONFIG
-              -XX:+UseParNewGC
-              -XX:+UseConcMarkSweepGC
-              -XX:CMSInitiatingOccupancyFraction=75
-              -XX:+UseCMSInitiatingOccupancyOnly
-              -XX:+HeapDumpOnOutOfMemoryError
-              -XX:+PrintGCDetails
-            CONFIG
-
+  jvm_options %w( 
+                -XX:+UseParNewGC
+                -XX:+UseConcMarkSweepGC
+                -XX:CMSInitiatingOccupancyFraction=75
+                -XX:+UseCMSInitiatingOccupancyOnly
+                -XX:+HeapDumpOnOutOfMemoryError
+                -XX:+PrintGCDetails
+              )
   configuration elasticsearch_config
   action :manage
   notifies :restart, 'service[elasticsearch]', :delayed

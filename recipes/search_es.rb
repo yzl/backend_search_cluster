@@ -30,8 +30,8 @@ elasticsearch_config = {
 elasticsearch_install 'elasticsearch' do
   type 'tarball' # type of install
   dir  '/opt/' # where to install
-  download_url 'https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.1/elasticsearch-2.4.1.tar.gz'
-  download_checksum '23a369ef42955c19aaaf9e34891eea3a055ed217d7fbe76da0998a7a54bbe167'
+  download_url 'https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.1.tar.gz'
+  download_checksum 'e0924ae2af5f4435cef009ad3a567169e9653263e7a3b8693dba932698ea7e34'
   action :install # could be :remove as well
 end
 

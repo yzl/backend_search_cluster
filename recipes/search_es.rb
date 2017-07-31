@@ -47,7 +47,6 @@ elasticsearch_configure 'elasticsearch' do
   path_plugins  '/opt/elasticsearch/plugins'
   path_bin      '/opt/elasticsearch/bin'
   logging(action: 'INFO')
-  thread_stack_size '512k'
   gc_settings <<-CONFIG
               -XX:+UseParNewGC
               -XX:+UseConcMarkSweepGC

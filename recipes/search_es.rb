@@ -78,12 +78,10 @@ end
 end
 
 elasticsearch_plugin 'discovery-ec2' do
-  url 'https://artifacts.elastic.co/downloads/elasticsearch-plugins/discovery-ec2/discovery-ec2-5.4.1.zip'
   action :install
 end
 
 elasticsearch_plugin 'repository-s3' do
-  url 'https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-s3/repository-s3-5.4.1.zip'
   action :install
 end
 

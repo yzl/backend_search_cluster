@@ -17,12 +17,13 @@ WorkingDirectory=<%= @path_home %>
 User=<%= @es_user %>
 Group=<%= @es_group %>
 
+ExecStartPre=<%= @path_home %>/bin/elasticsearch-systemd-pre-exec
+
 ExecStart=<%= @path_home %>/bin/elasticsearch \
             -p ${PID_DIR}/elasticsearch.pid \
-            -Ees.default.path.home=${ES_HOME} \
-            -Ees.default.path.logs=${LOG_DIR} \
-            -Ees.default.path.data=${DATA_DIR} \
-            -Ees.default.path.conf=${CONF_DIR}
+            -Edefault.path.logs=${LOG_DIR} \
+            -Edefault.path.data=${DATA_DIR} \
+            -Edefault.path.conf=${CONF_DIR}
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before

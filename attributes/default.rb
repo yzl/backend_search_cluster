@@ -9,3 +9,5 @@ default['logstash']['total_procs'] = '4'
 
 default['elasticsearch']['es_number_of_shards'] = 5
 default['elasticsearch']['es_max_content_length'] = "1gb"
+
+default['sysctl']['vm']['max_map_count'] = 262144

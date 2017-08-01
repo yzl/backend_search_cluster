@@ -70,13 +70,6 @@ elasticsearch_configure 'elasticsearch' do
   notifies :restart, 'service[elasticsearch]', :delayed
 end
 
-%w(/opt/elasticsearch/plugins /opt/elasticsearch/plugins/discovery-ec2 /opt/elasticsearch/plugins/repository-s3 ).each do |dir|
-  directory dir do
-    owner 'elasticsearch'
-    group 'elasticsearch'
-  end
-end
-
 elasticsearch_plugin 'discovery-ec2' do
   action :install
 end

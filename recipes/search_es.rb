@@ -72,21 +72,32 @@ elasticsearch_configure 'elasticsearch' do
   notifies :restart, 'service[elasticsearch]', :delayed
 end
 
-%w(/opt/elasticsearch/plugins /opt/elasticsearch/plugins/cloud-aws).each do |dir|
+%w(/opt/elasticsearch/plugins /opt/elasticsearch/plugins/discovery-ec2 /opt/elasticsearch/plugins/repository-s3 ).each do |dir|
   directory dir do
     owner 'elasticsearch'
     group 'elasticsearch'
   end
 end
 
-remote_file 'cloud-aws-2.4.1.zip' do
-  source 'https://download.elastic.co/elasticsearch/release/org/elasticsearch/plugin/cloud-aws/2.4.1/cloud-aws-2.4.1.zip'
-  path '/tmp/cloud-aws-2.4.1.zip'
-  notifies :run, 'execute[unzip cloud-aws]', :immediately
+remote_file 'discovery-ec2-5.4.1.zip' do
+  source 'https://artifacts.elastic.co/downloads/elasticsearch-plugins/discovery-ec2/discovery-ec2-5.4.1.zip'
+  path '/tmp/discovery-ec2-5.4.1.zip'
+  notifies :run, 'execute[unzip discovery-ec2]', :immediately
 end
 
-execute 'unzip cloud-aws' do
-  command 'unzip /tmp/cloud-aws-2.4.1.zip -d /opt/elasticsearch/plugins/cloud-aws'
+execute 'unzip discovery-ec2' do
+  command 'unzip /tmp/discovery-ec2-5.4.1.zip -d /opt/elasticsearch/plugins/discovery-ec2'
+  action :nothing
+end
+
+remote_file 'repository-s3-5.4.1.zip' do
+  source 'https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-s3/repository-s3-5.4.1.zip'
+  path '/tmp/repository-s3-5.4.1.zip'
+  notifies :run, 'execute[unzip repository-s3]', :immediately
+end
+
+execute 'unzip repository-s3' do
+  command 'unzip /tmp/repository-s3-5.4.1.zip -d /opt/elasticsearch/plugins/repository-s3'
   action :nothing
 end
 
